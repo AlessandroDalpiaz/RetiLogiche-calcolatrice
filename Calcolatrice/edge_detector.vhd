@@ -23,7 +23,7 @@ architecture Behavioral of edge_detector is
 	begin
 		if res='1' then
 		present_state<=at_zero;
-		elsif rising edge(clk) then
+		elsif rising_edge(clk) then
 		present_state<=next_state;
 		end if;
 	end process seq;

@@ -12,8 +12,8 @@ entity Calcolatrice is
 Port (clk, res: in std_logic;
 		SW: in std_logic_vector(15 downto 0);
 		led: out std_logic_vector(15 downto 0);
-		CA, CB, CC, CD, CE, CF, CG, DP : out std_logic;
-		AN: std_logic_vector (7 downto 0);
+		CA, CB, CC, CD, CE, CF, CG, DP: out std_logic;
+		AN: out std_logic_vector (7 downto 0);
 		BTNC, BTNU, BTNL, BTNR, BTND : in std_logic;
 		output: out std_logic_vector(31 downto 0)
 	);
@@ -83,12 +83,12 @@ begin
 		digitl => display_value(7 downto 4),
 		digit2 => display_value(11 downto 8),
 		digit3 => display_value(15 downto 12),
-		digit4 => display_value(19 downto l6),
+		digit4 => display_value(19 downto 16),
 		digit5 => display_value(23 downto 20),
 		digit6 => display_value(27 downto 24),
 		digit7 => display_value(31 downto 28),
 		CA => CA,
-		CB => cB,
+		CB => CB,
 		CC => CC,
 		CD => CD,
 		CE => CE,
@@ -115,7 +115,7 @@ begin
 	do_sub <= left_edge;
 	do_mult <= right_edge;
 
-	the_accumulator : entity work.accumlator(Behavioral)
+	the_accumulator : entity work.accumulator(Behavioral)
 	port map(
 		clk => clk,
 		center => center_edge,
