@@ -27,11 +27,11 @@ end component;
 signal clk, res, CA, CB, CC, CD, CE, CG, CF, DP, BTNC, BTNU, BTNL, BTNR, BTND : std_logic:='0';
 signal SW, led : std_logic_vector(15 downto 0);
 signal AN : std_logic_vector (7 dowto 0);
-signal output: std_logic_vector (31 downto 0):
+signal output: std_logic_vector (31 downto 0);
 
 begin
 uut: Calcolatrice
-	port map{
+	port map(
 	clk => clk,
 	res => res,
 	SW => SW,
@@ -53,7 +53,7 @@ uut: Calcolatrice
 	output => output
 	);
 
-clock : process begin clk<='l'; wait for 5 ns; clk<= not clk; wait for 5 ns; end process;
+clock : process begin clk<='1'; wait for 5 ns; clk<= not clk; wait for 5 ns; end process;
 
 ciclo : process begin
 	SW<="0000000000100100" ;--Impostiamo in input il mmero 36 sugli switch

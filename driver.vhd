@@ -31,7 +31,7 @@ architecture Behavioral of driver is
 -- We will use a counter to derive the frequency for the displays
 -- Clock is 100 MHz, we use 3 bits to address the display, so count every
 -- size - 3 bits.
-signal flick_counter : unsigned( size - l downto 0 ); --20bit, da 19 a 0.
+signal flick_counter : unsigned( size -1 downto 0 ); --20bit, da 19 a 0.
 -- The digit is temporarily stored here
 signal digit : std_logic_vector( 3 downto 0);
 -- Collect the values of the cathodes here
@@ -44,11 +44,11 @@ begin
 		if reset = '0' then
 			flick_counter <= ( others => '0' );
 		elsif rising_edge( clk ) then
-			flick_counter <= flick_counter + l;
+			flick_counter <= flick_counter + 1;
 		end if;
 	end process;
 	-- Select the anods: decoder 3-3
-	with flick_counter( size - l downto size - 3 ) select
+	with flick_counter( size -1 downto size - 3 ) select
 	AN <=
 	"11111110" when "000",
 	"11111101" when "001",
@@ -59,7 +59,7 @@ begin
 	"10111111" when "110",
 	"01111111" when others;
 	-- Select the digit: multiplexer 8-1
-	with flick_counter{( size - l downto size - 3 ) select
+	with flick_counter( size -1 downto size - 3 ) select
 	digit <=
 	digit0 when "000",
 	digitl when "001",

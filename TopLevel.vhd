@@ -26,8 +26,8 @@ architecture Behavioral of Calcolatrice is
 	signal acc_in, acc_out : signed(31 downto 0);
 	-- signal acc_init, acc enable: std logic;
 	signal do_add , do_sub , do_mult : std_logic;
-	signal display_value : std_logic_vector(3l downto 0);
-	signal sw_input : std_logic_vector(3l downto 0);
+	signal display_value : std_logic_vector(31 downto 0);
+	signal sw_input : std_logic_vector(31 downto 0);
 
 begin
 
@@ -55,10 +55,10 @@ begin
 		res => res
 	);
 	
-	left_detect : entity work.edge_detector(Behavioral}
+	left_detect : entity work.edge_detector(Behavioral)
 	port map(
 		clk => clk,
-		btn => BTNL.
+		btn => BTNL,
 		edge => left_edge,
 		res => res
 	);
@@ -79,9 +79,9 @@ begin
 	) port map(
 		clk => clk,
 		reset => res,
-		digit0 => display_value(3 downto 0},
+		digit0 => display_value(3 downto 0),
 		digitl => display_value(7 downto 4),
-		digit2 => display_value(ll downto 8),
+		digit2 => display_value(11 downto 8),
 		digit3 => display_value(15 downto 12),
 		digit4 => display_value(19 downto l6),
 		digit5 => display_value(23 downto 20),
@@ -100,16 +100,15 @@ begin
 
 	LED <= SW;
 
-	sw_input <= SW(15) & SW{15) & SW(15) & SW(15) & SW(15) & SW(15) & SW(15) & SW(15) & SW(15)
+	sw_input <= SW(15) & SW(15) & SW(15) & SW(15) & SW(15) & SW(15) & SW(15) & SW(15) & SW(15)
+	& SW(15) & SW(15) & SW(15) & SW(15) & SW(15) & SW(15) & SW(15) & SW;
 
-	& SW(15) & SW(15) & SW(15) & SW(15) & SW(1S) e SW(15) & SW(15) & SW;
-
-	the_alu : entity work.alu(Behavioral} port map (
+	the_alu : entity work.alu(Behavioral) port map (
 		acc => acc_out,
 		number => signed(sw_input),
 		up => do_add,
 		left => do_sub,
-		right => do mlt,
+		right => do_mult,
 		result => acc_in
 	);
 	do_add <= up_edge;

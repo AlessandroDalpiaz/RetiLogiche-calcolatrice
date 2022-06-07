@@ -1,0 +1,7 @@
+v 4
+file . "alu.vhd" "877f65bb43667d4719735e24084210f1c846cbd0" "20220607115700.236":
+  entity alu at 1( 0) + 0 on 15;
+  architecture behavioral of alu at 19( 493) + 0 on 16;
+file . "accumulatore.vhd" "2400e5229b002aa84aa5993ca37bf8d37557f51f" "20220607115341.833":
+  entity accumulator at 1( 0) + 0 on 13;
+  architecture behavioral of accumulator at 18( 491) + 0 on 14;

@@ -21,7 +21,7 @@ architecture Behavioral of edge_detector is
 
 	seq: process(res, clk) is
 	begin
-		if res='l' then
+		if res='1' then
 		present_state<=at_zero;
 		elsif rising edge(clk) then
 		present_state<=next_state;

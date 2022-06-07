@@ -14,7 +14,7 @@ Port (number: in signed(31 downto 0);
 	acc: in signed(31 downto 0);
 	result: out signed(31 downto 0)
 	);
-end alu:
+end alu;
 
 architecture Behavioral of alu is
 	signal mult: signed(63 downto 0);
@@ -23,9 +23,9 @@ begin
 		--result<=number; --Inizialmente 11 risultato é indeterminato,
 		--ma così non vengono effettuate operazioni non necessarie
 		if(up='1') then result<=(number+acc); end if;
-		if(left='l') then result<(acc-number); end if;
-		if{right='1') then result<=mult(31 downto 0}; end if;
-	end process:
+		if(left='1') then result<=(acc-number); end if;
+		if(right='1') then result<=mult(31 downto 0); end if;
+	end process;
 	mult<=acc*number;
 
 end Behavioral;
