@@ -26,7 +26,7 @@ component Calcolatrice
 end component;
 signal clk, res, CA, CB, CC, CD, CE, CG, CF, DP, BTNC, BTNU, BTNL, BTNR, BTND : std_logic:='0';
 signal SW, led : std_logic_vector(15 downto 0);
-signal AN : std_logic_vector (7 dowto 0);
+signal AN : std_logic_vector (7 downto 0);
 signal output: std_logic_vector (31 downto 0);
 
 begin
