@@ -1,16 +1,19 @@
 v 4
-file . "TopLevel.vhd" "292de33ccf52c647e4b3a87a2095c2717593033d" "20220607200651.360":
-  entity calcolatrice at 1( 0) + 0 on 29;
-  architecture behavioral of calcolatrice at 23( 672) + 0 on 30;
-file . "driver.vhd" "b60d7566b6662033b33ebc8c8b3417882ffa61cb" "20220607200206.222":
-  entity driver at 1( 0) + 0 on 23;
-  architecture behavioral of driver at 30( 918) + 0 on 24;
-file . "alu.vhd" "877f65bb43667d4719735e24084210f1c846cbd0" "20220607194446.077":
-  entity alu at 1( 0) + 0 on 17;
-  architecture behavioral of alu at 19( 493) + 0 on 18;
-file . "accumulatore.vhd" "2400e5229b002aa84aa5993ca37bf8d37557f51f" "20220607200438.621":
-  entity accumulator at 1( 0) + 0 on 27;
-  architecture behavioral of accumulator at 18( 491) + 0 on 28;
-file . "edge_detector.vhd" "bf120f04dbe2bbb22cf7b5b1c9f186041078f3f8" "20220607194419.250":
-  entity edge_detector at 1( 0) + 0 on 15;
-  architecture behavioral of edge_detector at 17( 440) + 0 on 16;
+file . "alu.vhd" "877f65bb43667d4719735e24084210f1c846cbd0" "20220608072945.389":
+  entity alu at 1( 0) + 0 on 23;
+  architecture behavioral of alu at 19( 493) + 0 on 24;
+file . "accumulatore.vhd" "2400e5229b002aa84aa5993ca37bf8d37557f51f" "20220608072945.390":
+  entity accumulator at 1( 0) + 0 on 25;
+  architecture behavioral of accumulator at 18( 491) + 0 on 26;
+file . "driver.vhd" "b60d7566b6662033b33ebc8c8b3417882ffa61cb" "20220608072945.391":
+  entity driver at 1( 0) + 0 on 27;
+  architecture behavioral of driver at 30( 918) + 0 on 28;
+file . "edge_detector.vhd" "bf120f04dbe2bbb22cf7b5b1c9f186041078f3f8" "20220608072945.392":
+  entity edge_detector at 1( 0) + 0 on 29;
+  architecture behavioral of edge_detector at 17( 440) + 0 on 30;
+file . "TopLevel.vhd" "292de33ccf52c647e4b3a87a2095c2717593033d" "20220608072945.393":
+  entity calcolatrice at 1( 0) + 0 on 31;
+  architecture behavioral of calcolatrice at 23( 672) + 0 on 32;
+file . "TopLevelTestBench.vhd" "12169a1783dccf9b35736055ecdeb25073a029e6" "20220608072945.394":
+  entity calcolatrice_testbench at 1( 0) + 0 on 33;
+  architecture behavioral of calcolatrice_testbench at 15( 407) + 0 on 34;

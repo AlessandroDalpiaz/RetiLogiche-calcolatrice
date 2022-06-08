@@ -12,14 +12,14 @@ entity Calcolatrice_testbench is
 -- Port ( );
 end Calcolatrice_testbench;
 
-architecture Behavioral of Calcolatrice testbench is
+architecture Behavioral of Calcolatrice_testbench is
 
 component Calcolatrice
 	Port (clk, res: in std_logic;
 		SW: in std_logic_vector(15 downto 0);
 		led: out std_logic_vector(15 downto 0);
 		CA, CB, CC, CD, CE, CF, CG, DP : out std_logic;
-		AN: std_logic_vector (7 downto 0);
+		AN: out std_logic_vector (7 downto 0);
 		BTNC, BTNU, BTNL, BTNR, BTND : in std_logic;
 		output: out std_logic_vector(31 downto 0)
 	);
@@ -57,14 +57,14 @@ clock : process begin clk<='1'; wait for 5 ns; clk<= not clk; wait for 5 ns; end
 
 ciclo : process begin
 	SW<="0000000000100100" ;--Impostiamo in input il mmero 36 sugli switch
-	BINC <='1';
+	BTNC <='1';
 	wait for 10 ns;
-	BINC <='0';
+	BTNC <='0';
 	wait for 100 ns;
 	--Somma 1
 	BTNU <='1';
 	wait for 10 ns;
-	BINU <='0';
+	BTNU <='0';
 	wait for 100 ns;
 	--Somma 2
 	SW<="0000000000000100";      --Imposto in input il numero 4 sugli switch
@@ -90,5 +90,5 @@ ciclo : process begin
 	BTNC <='0';			--Devo ottenere 0 in output
 	wait;
 
-end proces:
+end process;
 end Behavioral;
