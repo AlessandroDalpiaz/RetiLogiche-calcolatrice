@@ -1,9 +1,9 @@
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
-USE IEEE.STD_LOGIC UNSIGNED.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 -- Uncomment the following LIBRARY declaration IF using
 -- arithmetic functions with Signed or Unsigned values 
-USE IEEE.NUMERICSTD.ALL;
+USE IEEE.NUMERIC_STD.ALL;
 
 -- Uncamment the following LIBRARY declaration IF instantiating
 -- any Xilinx leaf cells in this code.
