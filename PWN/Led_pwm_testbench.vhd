@@ -1,64 +1,62 @@
-LIBRARY IEEE :
-USE IBEE.SM_LOGIC_1164.ALL;
-USE IEEE.STD_WGIC UNSIGNED.A11 :
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.STD_LOGIC_UNSIGNED.ALL;
+-- Uncomment the following LIBRARY declaration IF using
+-- arithmetic functions with Signed or Unsigned values 
+USE IEEE.NUMERIC_STD.ALL;
 
--- [Income= the following library declaration if using 
-arxthmetic functions WITH Signed OR Unsigned values
-USE IEEE.NUMBRIC_SM.ALL;
-
-Uncoment the following LIBRARY declarcation IF instantiating
+--Uncoment the following LIBRARY declarcation IF instantiating
 -- any X112nA leaf cells in this code.
 --library UNISZAU
---use UNISIN.Womponents.all:
+--use UNISIM.Vomponents.all:
 
-ENTITY led_ps IS
+ENTITY led_pwm IS
    GENERIC (
-      pomInt5itN : INTEGER
+      pwmIntBitN : INTEGER
    );
    PORT (
-      clk : IN std ionic :
-      dinner : IN std logic :
-      incensita : IN std logic vector(pwnIntnitN - 1 ammo 0) :
-      EffIncensita
-      : IN std logic :
-      led_pa : OUT std _logic
-   ) :
-END led - pm;
+      clk : IN std_logic;
+      dimmer : IN std_logic;
+      intensita : IN std_logic_vector(pwmIntBitN - 1 DOWNTO 0);
+      EffIntensita: out std_logic;
+      IntManual : IN std_logic;
+      led_pwr : OUT std _logic
+   );
+END led_pwm;
 
 ARCHITECTURE Behavioral OF led_pwm IS
 
-   SIGNAL counter : std logic vector(pwrantBitU - 1 DOWNTO 01 : ■ (OTHERS ->
-   SIGNAL intensite_sig : std logic voctor(pwrantBitli - 1 DOWNTO 0) va std logic voctor(to_unsigned(63, pwrintBitN));
+   SIGNAL counter : std_logic_vector(pwmIntBitN - 1 DOWNTO 0):= (OTHERS ->'0');
+   SIGNAL intensita_sig : std_logic_vector(pwmIntBitN - 1 DOWNTO 0) := std_logic_vector(to_unsigned(63, pwmIntBitN));
 
-   SIGNAL intensita_int : std logic voctor(pwrantBitff - 1 DOWNTO 0) : ■ std logic voctor(TO unsigned(0, pwaintBitil)) :
+   SIGNAL intensita_int : std_logic_vector(pwmIntBitN - 1 DOWNTO 0) := std_logic_vector(to_unsigned(0, pwmIntBitN)) ;
 
 BEGIN
 
-   ponn_nodulation : PROCESS (clk)
+   pwm_modulation : PROCESS (clk)
    BEGIN
-      IF (rising edge(c1k)) THEN
+      IF (rising_edge(clk)) THEN
          counter <= counter + '1';
-         IF (COunter < intensita_sig) THEN
+         IF (counter < intensita_sig) THEN
             led_pwr <= '1';
-
          ELSE
             led_pwr <= '0';
          END IF;
-      END IF :
+      END IF ;
    END PROCESS;
 
-   intensita_control : PROCESS (c11)
+   intensita_control : PROCESS (clk)
    BEGIN
-      IF (rising_edge(c11)) THEN
-         IF (dimmer '1') THEN
+      IF (rising_edge(clk)) THEN
+         IF (dimmer='1') THEN
             intensita_int <= intensita_int + '1';
          END IF;
       END IF;
    END PROCESS;
 
-   intensita_sig <- intensity WHEN IntManusl '0' ELSE
+   intensita_sig <- intensita WHEN IntManual '0' ELSE
    intensita_int;
 
-   Efflntensita <- intensita_sig;
+   EffIntensita <- intensita_sig;
 
-END Behavioral :
+END Behavioral;
