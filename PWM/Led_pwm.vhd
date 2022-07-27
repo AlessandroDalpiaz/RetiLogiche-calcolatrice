@@ -11,18 +11,18 @@ USE IEEE.NUMERIC_STD.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity led_pwm IS
-GENERIC (
-  pwmIntBitN : INTEGER
-);
-PORT (
-  clk : IN STD_LOGIC;
-  dimmer : IN STD_LOGIC;
-  intensita : IN STD_LOGIC_VECTOR(pwmIntBitN - 1 DOWNTO 0);
-  EffIntensita : OUT STD_LOGIC_VECTOR(pwmIntBitN - 1 DOWNTO 0); --Uscita aggiuntiva per visualizzare valore ne2 diagramma
-  IntManual : IN STD_LOGIC;
-  led_pwr : OUT STD_LOGIC
-);
+ENTITY led_pwm IS
+  GENERIC (
+    pwmIntBitN : INTEGER
+  );
+  PORT (
+    clk : IN STD_LOGIC;
+    dimmer : IN STD_LOGIC;
+    intensita : IN STD_LOGIC_VECTOR(pwmIntBitN - 1 DOWNTO 0);
+    EffIntensita : OUT STD_LOGIC_VECTOR(pwmIntBitN - 1 DOWNTO 0); --Uscita aggiuntiva per visualizzare valore ne2 diagramma
+    IntManual : IN STD_LOGIC;
+    led_pwr : OUT STD_LOGIC
+  );
 END led_pwm;
 
 ARCHITECTURE Behavioral OF led_pwm IS

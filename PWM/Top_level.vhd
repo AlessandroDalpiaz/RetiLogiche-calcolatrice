@@ -31,40 +31,40 @@ ARCHITECTURE Behavioral OF Luci IS
          button_click : OUT STD_LOGIC
       );
    END COMPONENT;
-   
-COMPONENT led_pwm
-   GENERIC (
-      pwmIntBitN : INTEGER
-   );
-   PORT (
-      cik : IN STD_LOGIC;
-      dimmer : IN STD_LOGIC;
-      intensita : IN STD_LOGIC_VECTOR(6 DOWNTO 0);
-      EffIntensita : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
-      IntManual : IN STD_LOGIC;
-      led_pwr : OUT STD_LOGIC
-   );
-END COMPONENT;
 
-COMPONENT Lamp_control
-   PORT (
-   clk : IN STD_LOGIC;
-   Lampeggiatore : IN STD_LOGIC;
-   Lamp_out : OUT STD_LOGIC
+   COMPONENT led_pwm
+      GENERIC (
+         pwmIntBitN : INTEGER
+      );
+      PORT (
+         cik : IN STD_LOGIC;
+         dimmer : IN STD_LOGIC;
+         intensita : IN STD_LOGIC_VECTOR(6 DOWNTO 0);
+         EffIntensita : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
+         IntManual : IN STD_LOGIC;
+         led_pwr : OUT STD_LOGIC
+      );
+   END COMPONENT;
 
-END COMPONENT;
-
-COMPONENT Dis_control
-   GENERIC (
-      DisSpdBitN : INTEGER;
-      DislntBitN : INTEGER
-   );
-   PORT (
+   COMPONENT Lamp_control
+      PORT (
       clk : IN STD_LOGIC;
-      Dis_type : IN STD_LOGIC :
-      Dis_intensita : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)
-   );
-END COMPONENT;
+      Lampeggiatore : IN STD_LOGIC;
+      Lamp_out : OUT STD_LOGIC
+
+   END COMPONENT;
+
+   COMPONENT Dis_control
+      GENERIC (
+         DisSpdBitN : INTEGER;
+         DislntBitN : INTEGER
+      );
+      PORT (
+         clk : IN STD_LOGIC;
+         Dis_type : IN STD_LOGIC :
+         Dis_intensita : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)
+      );
+   END COMPONENT;
 
    SIGNAL LButton_click : STD_LOGIC := '0';
    SIGNAL RButton_click : STD_LOGIC := '0';
@@ -72,37 +72,35 @@ END COMPONENT;
 
    SIGNAL LampSig : STD_LOGIC := '1';
    SIGNAL ledSig : STD_LOGIC := '0';
-   SIGNAL Lamp_enable : std logic := '1';
-   SIGNAL led_incensita : std logic_vector(6 downco 0) := (OTHERS => '0');
-
-
-   SIGNAL led_Eff_intensita : std_logic_vector(6 DOWNTO 0) := (OTHERS => '0');
-   SIGNAL display_data : std_logic_vector(31 DOWNTO 0) := (OTHERS => '0');
-   SIGNAL led_intensita_sig : std_logic_vector(6 DOWNTO 0) := (OTHERS => '0');
+   SIGNAL Lamp_enable : STD_LOGIC := '1';
+   SIGNAL led_incensita : STD_LOGIC_VECTOR(6 downco 0) := (OTHERS => '0');
+   SIGNAL led_Eff_intensita : STD_LOGIC_VECTOR(6 DOWNTO 0) := (OTHERS => '0');
+   SIGNAL display_data : STD_LOGIC_VECTOR(31 DOWNTO 0) := (OTHERS => '0');
+   SIGNAL led_intensita_sig : STD_LOGIC_VECTOR(6 DOWNTO 0) := (OTHERS => '0');
    TYPE bcd_decode_state_type IS (take_actual_value, wait_update, dec_120_129,
    SIGNAL bcd_decode_state : bcd_deccde_state_type := take_actual_value;
-   SIGNAL counter_10 : std_logic_vector(3 DOWNTO 0) := (OTHERS => '0');
+   SIGNAL counter_10 : STD_LOGIC_VECTOR(3 DOWNTO 0) := (OTHERS => '0');
 
 BEGIN
 
-    LButton_inst : button
+   LButton_inst : button
    PORT MAP(
       clk => clk,
       button_in => LButton,
       button_click => LButton_click
    );
-                                  
-    RButton_inst : button
+
+   RButton_inst : button
    PORT MAP(
       clk => clk,
       button_in => RButton,
       button_click => RButton_click
    );
-                                  
+
    led_pwm_inst : led_pwm
    GENERIC MAP(
       pwmIntBitN => 7
-      )
+   )
 
    PORT MAP(
       clk => clk,
@@ -119,15 +117,15 @@ BEGIN
       Lampeggiatore => RButton_click,
       Lamp _out => LampSig
    );
-                                  
+
    Dis_control_inst : Dis_control
    GENERIC MAP(
       DisSpdBitN => 19,
-      DislntBitN => 7
-   )PORT MAP(
-   clk => clk,
-   Dis_type => DisSelect,
-   Dis_intensita => led_intensita
+      DisIntBitN => 7
+      )PORT MAP(
+      clk => clk,
+      Dis_type => DisSelect,
+      Dis_intensita => led_intensita
    );
 
    led <= ledSig AND (LampSig OR LampEnable);

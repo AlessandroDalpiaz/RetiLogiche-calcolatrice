@@ -15,21 +15,21 @@ ENTITY led_pwm IS
       pwmIntBitN : INTEGER
    );
    PORT (
-      clk : IN std_logic;
-      dimmer : IN std_logic;
-      intensita : IN std_logic_vector(pwmIntBitN - 1 DOWNTO 0);
-      EffIntensita: out std_logic;
-      IntManual : IN std_logic;
+      clk : IN STD_LOGIC;
+      dimmer : IN STD_LOGIC;
+      intensita : IN STD_LOGIC_VECTOR(pwmIntBitN - 1 DOWNTO 0);
+      EffIntensita : OUT STD_LOGIC;
+      IntManual : IN STD_LOGIC;
       led_pwr : OUT std _logic
    );
 END led_pwm;
 
 ARCHITECTURE Behavioral OF led_pwm IS
 
-   SIGNAL counter : std_logic_vector(pwmIntBitN - 1 DOWNTO 0):= (OTHERS ->'0');
-   SIGNAL intensita_sig : std_logic_vector(pwmIntBitN - 1 DOWNTO 0) := std_logic_vector(to_unsigned(63, pwmIntBitN));
+   SIGNAL counter : STD_LOGIC_VECTOR(pwmIntBitN - 1 DOWNTO 0) := (OTHERS -> '0');
+   SIGNAL intensita_sig : STD_LOGIC_VECTOR(pwmIntBitN - 1 DOWNTO 0) := STD_LOGIC_VECTOR(to_unsigned(63, pwmIntBitN));
 
-   SIGNAL intensita_int : std_logic_vector(pwmIntBitN - 1 DOWNTO 0) := std_logic_vector(to_unsigned(0, pwmIntBitN)) ;
+   SIGNAL intensita_int : STD_LOGIC_VECTOR(pwmIntBitN - 1 DOWNTO 0) := STD_LOGIC_VECTOR(to_unsigned(0, pwmIntBitN));
 
 BEGIN
 
@@ -42,13 +42,13 @@ BEGIN
          ELSE
             led_pwr <= '0';
          END IF;
-      END IF ;
+      END IF;
    END PROCESS;
 
    intensita_control : PROCESS (clk)
    BEGIN
       IF (rising_edge(clk)) THEN
-         IF (dimmer='1') THEN
+         IF (dimmer = '1') THEN
             intensita_int <= intensita_int + '1';
          END IF;
       END IF;

@@ -12,9 +12,9 @@ USE IEEE.NUMERIC_STD.ALL;
 
 ENTITY Lamp_control IS
 PORT (
-clk : IN std_logic;
-Lampeggiatore : IN std_logic;
-Lamp_out : OUT STD_LOGIC
+  clk : IN STD_LOGIC;
+  Lampeggiatore : IN STD_LOGIC;
+  Lamp_out : OUT STD_LOGIC
 );
 END Lamp_control;
 
@@ -22,7 +22,7 @@ ARCHITECTURE Behavioral OF Lamp_control IS
 
 SIGNAL LampeggiatoreCounter : STD_LOGIC_VECTOR(26 DOWNTO 0) := STD_LOGIC_VECTOR(to_unsigned(100000000, 27));
 SIGNAL LampeggiatoreStart : STD_LOGIC_VECTOR(26 DOWNTO 0) := STD_LOGIC_VECTOR(to_unsigned(100000000, 27));
-SIGNAL LampSig :STD_LOGIC := '1';
+SIGNAL LampSig : STD_LOGIC := '1';
 
 TYPE Lamp_state_type IS (LampUp_O, LampUp_1, LampUp_2, LampUp_3, LampDown_0, LampDown_l, LampDown_2, LampDown_3);
 SIGNAL LampState : Lamp_state_type := LampUp_0;

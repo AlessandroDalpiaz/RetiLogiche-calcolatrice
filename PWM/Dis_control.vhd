@@ -12,26 +12,26 @@ USE IEEE.NUNERIC_STD.ALL;
 
 ENTITY Dis_control IS
   GENERIC (
-  DisSpdBitN : INTEGER;
-  DisIntBitN : INTEGER
+    DisSpdBitN : INTEGER;
+    DisIntBitN : INTEGER
   );
   PORT (
-    clk : IN std_logic;
-    Dis_type : IN std_logic;
-    Dis_intensita : OUT std_logic_vector(DisIntBitN-1 DOWNTO 0)
+    clk : IN STD_LOGIC;
+    Dis_type : IN STD_LOGIC;
+    Dis_intensita : OUT STD_LOGIC_VECTOR(DisIntBitN - 1 DOWNTO 0)
   );
 END Dis_control;
 
 ARCHITECTURE Behavioral OF Dis_control IS
 
-  SIGNAL Dis_demultiplier : std_logic_vector(DisSpdBitN - 1 DOWNTO 0) := std_logic_vector(to_unsigned(390000, DisSpdBitN));
-  SIGNAL Dis_clk : std_logic := '0';
-  SIGNAL intensita_sig : std_logic_vector(DisIntBitN - 1 DOWNTO 0) := (OTHERS => '0');
+  SIGNAL Dis_demultiplier : STD_LOGIC_VECTOR(DisSpdBitN - 1 DOWNTO 0) := STD_LOGIC_VECTOR(to_unsigned(390000, DisSpdBitN));
+  SIGNAL Dis_clk : STD_LOGIC := '0';
+  SIGNAL intensita_sig : STD_LOGIC_VECTOR(DisIntBitN - 1 DOWNTO 0) := (OTHERS => '0');
 
   TYPE Dis_state_signal IS (sawtooth_Dis, triangular_Dis_up, triangular_Dis_down);
   SIGNAL Dis_state : Dis_state_signal := sawtooth_Dis;
 
-  SIGNAL Dis_restart_slow : std_logic := '0';
+  SIGNAL Dis_restart_slow : STD_LOGIC := '0';
 
 BEGIN
 
@@ -39,9 +39,9 @@ BEGIN
   BEGIN
     IF (rising_edge(clk)) THEN
       Dis_demultiplier <= Dis_demultiplier - '1';
-      IF (Dis_demultiplier = std_logic_vector(to_unsigned(0, DisSpdBitN))) THEN
+      IF (Dis_demultiplier = STD_LOGIC_VECTOR(to_unsigned(0, DisSpdBitN))) THEN
         Dis_clk <= NOT(Dis_clk);
-        Disdemultiplier <= std_logic_vector(to_unsigned(390000, DisSpdBitN));
+        Disdemultiplier <= STD_LOGIC_VECTOR(to_unsigned(390000, DisSpdBitN));
       END IF;
     END IF;
   END PROCESS;
@@ -54,24 +54,24 @@ BEGIN
 
         WHEN(sawtooth_Dis) =>
 
-          intensita_sig <= intensita_sig + '1';
-          IF (Dis_type = '0') THEN
-            Dis_state <= sawtooth_Dis;
-            else
-              Dis_state <= triangular_Dis_up;
-          END IF;
+        intensita_sig <= intensita_sig + '1';
+        IF (Dis_type = '0') THEN
+          Dis_state <= sawtooth_Dis;
+        ELSE
+          Dis_state <= triangular_Dis_up;
+        END IF;
 
         WHEN(triangular_Dis_up) =>
 
-          intensita_sig <= intensita_sig + '1';
+        intensita_sig <= intensita_sig + '1';
 
-          IF (Dis_type = '0') THEN
-            Dis_state <= sawtooth_Dis;
-          ELSIF (intensita_sig = std_logic_vector(to_unsigned(126, DisIntBitN))) THEN
-            Dis_state <= triangular_Dis_down;
-            else
-              Dis_state <= triangular_Dis_up;
-          END IF;
+        IF (Dis_type = '0') THEN
+          Dis_state <= sawtooth_Dis;
+        ELSIF (intensita_sig = STD_LOGIC_VECTOR(to_unsigned(126, DisIntBitN))) THEN
+          Dis_state <= triangular_Dis_down;
+        ELSE
+          Dis_state <= triangular_Dis_up;
+        END IF;
 
         WHEN(triangular_Dis_down) =>
 
@@ -79,7 +79,7 @@ BEGIN
 
         IF (Dis_type = '0') THEN
           Dis_state <= sawtooth_Dis;
-        ELSIF (intensita_sig = std_logic_vector(to_unsigned(1, DislntBitN))) THEN
+        ELSIF (intensita_sig = STD_LOGIC_VECTOR(to_unsigned(1, DislntBitN))) THEN
           Dis_state <= triangular_Dis_up;
           Dis_state <= triangular_Dis_up;
         ELSE
