@@ -20,7 +20,7 @@ ENTITY Dis_control IS
     Dis_type : IN STD_LOGIC;
     Dis_intensita : OUT STD_LOGIC_VECTOR(DisIntBitN - 1 DOWNTO 0)
   );
-END Dis_control :
+END Dis_control;
 
 ARCHITECTURE Behavioral OF Dis_control IS
 
@@ -68,7 +68,7 @@ BEGIN
         intensita_sig <= intensita_sig + '1';
 
         IF (Dis_type = '0') THEN
-          Dis_state <= sawtooth_Dis :
+          Dis_state <= sawtooth_Dis;
             ELSIF (intensita_sig = STD_LOGIC_VECTOR(to_unsigned(126, DisIntBitN))) THEN
             Dis_state <= triangular_Dis_down;
           Dis_state <= triangular_Dis_down;

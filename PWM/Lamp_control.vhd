@@ -124,3 +124,5 @@ BEGIN
 END PROCESS;
 
 Lamp_out <= LampSig;
+
+END;

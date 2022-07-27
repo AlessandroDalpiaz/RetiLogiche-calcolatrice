@@ -25,6 +25,7 @@ ARCHITECTURE Behavioral OF Luci_TESTBENCH IS
       LampEnable : IN STD_LOGIC;
       IntManual : IN STD_LOGIC;
       DisSelect : IN STD_LOGIC
+      );
 
    END COMPONENT;
 
@@ -51,3 +52,5 @@ BEGIN
       IntManual => IntManual,
       DisSelect => DisSelect
    );
+
+END;  

@@ -3,7 +3,7 @@ USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 -- Uncomment the following LIBRARY declaration IF using
 -- arithmetic functions with Signed or Unsigned values 
-USE IEEE.NUNERIC_STD.ALL;
+USE IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following LIBRARY declaration IF instantiating
 -- any Xilinx leaf cells in this code.
@@ -92,3 +92,4 @@ BEGIN
   END PROCESS;
   Dis_intensita <= intensita_sig;
 END Behavioral;
+

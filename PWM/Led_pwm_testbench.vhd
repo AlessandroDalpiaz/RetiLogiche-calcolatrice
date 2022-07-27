@@ -20,13 +20,13 @@ ENTITY led_pwm IS
       intensita : IN STD_LOGIC_VECTOR(pwmIntBitN - 1 DOWNTO 0);
       EffIntensita : OUT STD_LOGIC;
       IntManual : IN STD_LOGIC;
-      led_pwr : OUT std _logic
+      led_pwr : OUT STD_LOGIC
    );
 END led_pwm;
 
 ARCHITECTURE Behavioral OF led_pwm IS
 
-   SIGNAL counter : STD_LOGIC_VECTOR(pwmIntBitN - 1 DOWNTO 0) := (OTHERS -> '0');
+   SIGNAL counter : STD_LOGIC_VECTOR(pwmIntBitN - 1 DOWNTO 0) := (OTHERS => '0');
    SIGNAL intensita_sig : STD_LOGIC_VECTOR(pwmIntBitN - 1 DOWNTO 0) := STD_LOGIC_VECTOR(to_unsigned(63, pwmIntBitN));
 
    SIGNAL intensita_int : STD_LOGIC_VECTOR(pwmIntBitN - 1 DOWNTO 0) := STD_LOGIC_VECTOR(to_unsigned(0, pwmIntBitN));
@@ -54,9 +54,9 @@ BEGIN
       END IF;
    END PROCESS;
 
-   intensita_sig <- intensita WHEN IntManual '0' ELSE
+   intensita_sig <= intensita WHEN IntManual '0' ELSE
    intensita_int;
 
-   EffIntensita <- intensita_sig;
+   EffIntensita <= intensita_sig;
 
 END Behavioral;

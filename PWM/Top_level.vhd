@@ -26,8 +26,8 @@ ARCHITECTURE Behavioral OF Luci IS
 
    COMPONENT button
       PORT (
-         clk : IN STD_LOGIC :
-         button_in : IN STD_LOGIC :
+         clk : IN STD_LOGIC;
+         button_in : IN STD_LOGIC;
          button_click : OUT STD_LOGIC
       );
    END COMPONENT;
@@ -51,6 +51,7 @@ ARCHITECTURE Behavioral OF Luci IS
       clk : IN STD_LOGIC;
       Lampeggiatore : IN STD_LOGIC;
       Lamp_out : OUT STD_LOGIC
+      );
 
    END COMPONENT;
 
@@ -61,7 +62,7 @@ ARCHITECTURE Behavioral OF Luci IS
       );
       PORT (
          clk : IN STD_LOGIC;
-         Dis_type : IN STD_LOGIC :
+         Dis_type : IN STD_LOGIC;
          Dis_intensita : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)
       );
    END COMPONENT;
@@ -73,11 +74,11 @@ ARCHITECTURE Behavioral OF Luci IS
    SIGNAL LampSig : STD_LOGIC := '1';
    SIGNAL ledSig : STD_LOGIC := '0';
    SIGNAL Lamp_enable : STD_LOGIC := '1';
-   SIGNAL led_incensita : STD_LOGIC_VECTOR(6 downco 0) := (OTHERS => '0');
+   SIGNAL led_intensita : STD_LOGIC_VECTOR(6 DOWNTO 0) := (OTHERS => '0');
    SIGNAL led_Eff_intensita : STD_LOGIC_VECTOR(6 DOWNTO 0) := (OTHERS => '0');
    SIGNAL display_data : STD_LOGIC_VECTOR(31 DOWNTO 0) := (OTHERS => '0');
    SIGNAL led_intensita_sig : STD_LOGIC_VECTOR(6 DOWNTO 0) := (OTHERS => '0');
-   TYPE bcd_decode_state_type IS (take_actual_value, wait_update, dec_120_129,
+   TYPE bcd_decode_state_type IS (take_actual_value, wait_update, dec_120_129);
    SIGNAL bcd_decode_state : bcd_deccde_state_type := take_actual_value;
    SIGNAL counter_10 : STD_LOGIC_VECTOR(3 DOWNTO 0) := (OTHERS => '0');
 
@@ -108,14 +109,14 @@ BEGIN
       intensita => led_intensita,
       Effintensita => led_Eff_intensita,
       IntManual => IntManual,
-      led_pwr -> ledSig
+      led_pwr => ledSig
    );
 
    Lamp_control_inst : Lamp_control
    PORT MAP(
       clk => clk,
       Lampeggiatore => RButton_click,
-      Lamp _out => LampSig
+      Lamp_out => LampSig
    );
 
    Dis_control_inst : Dis_control
@@ -131,3 +132,4 @@ BEGIN
    led <= ledSig AND (LampSig OR LampEnable);
 
 END Behavioral;
+

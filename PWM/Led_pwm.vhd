@@ -48,7 +48,7 @@ BEGIN
 
   intensita_control : PROCESS (clk)
   BEGIN
-    IF (rising edge(clk)) THEN
+    IF (rising_edge(clk)) THEN
       IF (dimmer = '1') THEN
         intensita_int <= intensita_int + '1';
       END IF;
@@ -61,3 +61,4 @@ BEGIN
   EffIntensita <= intensita_sig;
 
 END Behavioral;
+

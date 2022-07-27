@@ -15,7 +15,7 @@ ENTITY Lamp_control IS
    clk : IN STD_LOGIC;
    Lampeggiatore : IN STD_LOGIC;
    Lamp_out : OUT STD_LOGIC
-
+   );
 END Lamp_control;
 
 ARCHITECTURE Behavioral OF Lamp_control IS
@@ -25,7 +25,7 @@ ARCHITECTURE Behavioral OF Lamp_control IS
    SIGNAL LampSig : STD_LOGIC := '1';
 
    TYPE Lamp_state_type IS (LampUp_O, LampUp_1, LampUp_2, LampUp_3, LampDown_0, LampDown_l, LampDown_2, LampDown_3);
-   SIGNAL Lam State : Lamp_state_type := LampUp_0;
+   SIGNAL Lamp_State : Lamp_state_type := LampUp_0;
 
 BEGIN
 
