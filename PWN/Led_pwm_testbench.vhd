@@ -5,10 +5,10 @@ USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 -- arithmetic functions with Signed or Unsigned values 
 USE IEEE.NUMERIC_STD.ALL;
 
---Uncoment the following LIBRARY declarcation IF instantiating
--- any X112nA leaf cells in this code.
---library UNISZAU
---use UNISIM.Vomponents.all:
+-- Uncomment the following LIBRARY declaration IF instantiating
+-- any Xilinx leaf cells in this code.
+--library UNISIM;
+--use UNISIM.VComponents.all;
 
 ENTITY led_pwm IS
    GENERIC (
