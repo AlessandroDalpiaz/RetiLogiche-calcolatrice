@@ -19,7 +19,7 @@ PORT (
   clk : IN STD_LOGIC;
   dimmer : IN STD_LOGIC;
   intensita : IN STD_LOGIC_VECTOR(pwmIntBitN - 1 DOWNTO 0);
-  Efflntensita : OUT STD_LOGIC_VECTOR(pwmIntBitN - 1 DOWNTO 0); --Uscita aggiuntiva per visualizzare valore ne2 diagramma
+  EffIntensita : OUT STD_LOGIC_VECTOR(pwmIntBitN - 1 DOWNTO 0); --Uscita aggiuntiva per visualizzare valore ne2 diagramma
   IntManual : IN STD_LOGIC;
   led_pwr : OUT STD_LOGIC
 );
