@@ -1,13 +1,13 @@
 LIBRARY IEEE;
-USE IEEE.STD_LOGIC_I164.ALL;
+USE IEEE.STD_LOGIC_1164.ALL;
 USE IEEE.STD_LOGIC_UNSIGNED.ALL;
--- Uncommet  the following LIBRARY declaration IF using
+-- Uncomment the following LIBRARY declaration IF using
 -- arithmetic functions with Signed or Unsigned values 
 USE IEEE.NUMERIC_STD.ALL;
 
--- Uncomment the following LIBRARY declaration IF instantiating
--- any Xilinx leaf cells in this code. 
---library UNISIM
+-- Uncamment the following LIBRARY declaration IF instantiating
+-- any Xilinx leaf cells in this code.
+--library UNISIM;
 --use UNISIM.VComponents.all;
 
 ENTITY Luci IS
