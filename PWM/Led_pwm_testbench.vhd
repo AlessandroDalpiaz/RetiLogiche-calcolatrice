@@ -18,7 +18,7 @@ ENTITY led_pwm IS
       clk : IN STD_LOGIC;
       dimmer : IN STD_LOGIC;
       intensita : IN STD_LOGIC_VECTOR(pwmIntBitN - 1 DOWNTO 0);
-      EffIntensita : OUT STD_LOGIC;
+      EffIntensita : OUT STD_LOGIC_VECTOR(pwmIntBitN - 1 DOWNTO 0);
       IntManual : IN STD_LOGIC;
       led_pwr : OUT STD_LOGIC
    );
@@ -54,7 +54,7 @@ BEGIN
       END IF;
    END PROCESS;
 
-   intensita_sig <= intensita WHEN IntManual '0' ELSE
+   intensita_sig <= intensita WHEN IntManual = '0' ELSE
    intensita_int;
 
    EffIntensita <= intensita_sig;

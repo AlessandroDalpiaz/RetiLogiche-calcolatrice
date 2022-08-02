@@ -5,7 +5,7 @@ USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 -- arithmetic functions with Signed or Unsigned values 
 USE IEEE.NUMERIC_STD.ALL;
 
--- Uncamment the following LIBRARY declaration IF instantiating
+-- Uncomment the following LIBRARY declaration IF instantiating
 -- any Xilinx leaf cells in this code.
 --library UNISIM;
 --use UNISIM.VComponents.all;
@@ -37,7 +37,7 @@ ARCHITECTURE Behavioral OF Luci IS
          pwmIntBitN : INTEGER
       );
       PORT (
-         cik : IN STD_LOGIC;
+         clk : IN STD_LOGIC;
          dimmer : IN STD_LOGIC;
          intensita : IN STD_LOGIC_VECTOR(6 DOWNTO 0);
          EffIntensita : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
@@ -58,7 +58,7 @@ ARCHITECTURE Behavioral OF Luci IS
    COMPONENT Dis_control
       GENERIC (
          DisSpdBitN : INTEGER;
-         DislntBitN : INTEGER
+         DisIntBitN : INTEGER
       );
       PORT (
          clk : IN STD_LOGIC;
@@ -79,7 +79,7 @@ ARCHITECTURE Behavioral OF Luci IS
    SIGNAL display_data : STD_LOGIC_VECTOR(31 DOWNTO 0) := (OTHERS => '0');
    SIGNAL led_intensita_sig : STD_LOGIC_VECTOR(6 DOWNTO 0) := (OTHERS => '0');
    TYPE bcd_decode_state_type IS (take_actual_value, wait_update, dec_120_129);
-   SIGNAL bcd_decode_state : bcd_deccde_state_type := take_actual_value;
+   SIGNAL bcd_decode_state : bcd_decode_state_type := take_actual_value;
    SIGNAL counter_10 : STD_LOGIC_VECTOR(3 DOWNTO 0) := (OTHERS => '0');
 
 BEGIN
@@ -101,9 +101,7 @@ BEGIN
    led_pwm_inst : led_pwm
    GENERIC MAP(
       pwmIntBitN => 7
-   )
-
-   PORT MAP(
+   )PORT MAP(
       clk => clk,
       dimmer => LButton_click,
       intensita => led_intensita,

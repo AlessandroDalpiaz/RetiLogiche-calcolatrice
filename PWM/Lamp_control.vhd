@@ -5,7 +5,7 @@ USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 -- arithmetic functions with Signed or Unsigned values 
 USE IEEE.NUMERIC_STD.ALL;
 
--- Uncamment the following LIBRARY declaration IF instantiating
+-- Uncomment the following LIBRARY declaration IF instantiating
 -- any Xilinx leaf cells in this code.
 --library UNISIM;
 --use UNISIM.VComponents.all;
@@ -24,7 +24,7 @@ SIGNAL LampeggiatoreCounter : STD_LOGIC_VECTOR(26 DOWNTO 0) := STD_LOGIC_VECTOR(
 SIGNAL LampeggiatoreStart : STD_LOGIC_VECTOR(26 DOWNTO 0) := STD_LOGIC_VECTOR(to_unsigned(100000000, 27));
 SIGNAL LampSig : STD_LOGIC := '1';
 
-TYPE Lamp_state_type IS (LampUp_O, LampUp_1, LampUp_2, LampUp_3, LampDown_0, LampDown_l, LampDown_2, LampDown_3);
+TYPE Lamp_state_type IS (LampUp_0, LampUp_1, LampUp_2, LampUp_3, LampDown_0, LampDown_1, LampDown_2, LampDown_3);
 SIGNAL LampState : Lamp_state_type := LampUp_0;
 
 BEGIN
@@ -46,7 +46,7 @@ BEGIN
 
     CASE (LampState) IS
 
-      WHEN LampUp_O =>
+      WHEN LampUp_0 =>
 
         IF (Lampeggiatore = '1') THEN
           LampeggiatoreStart <= '0' & LampeggiatoreStart(26 DOWNTO 1);
@@ -55,7 +55,7 @@ BEGIN
           LampState <= LampUp_0;
         END IF;
 
-      WHEN LampUp_l =>
+      WHEN LampUp_1 =>
 
         IF (Lampeggiatore = '1') THEN
           LampeggiatoreStart <= '0' & LampeggiatoreStart(26 DOWNTO 1);
@@ -82,22 +82,22 @@ BEGIN
           LampState <= LampUp_3;
         END IF;
 
-      WHEN LampDown_O =>
+      WHEN LampDown_0 =>
 
         IF (Lampeggiatore = '1') THEN
           LampeggiatoreStart <= LampeggiatoreStart(25 DOWNTO 0) & '0';
-          LampState <= LampDown_l;
+          LampState <= LampDown_1;
         ELSE
           LampState <= LampDown_0;
         END IF;
 
-      WHEN LampDown_l =>
+      WHEN LampDown_1 =>
 
         IF (Lampeggiatore = '1') THEN
           LampeggiatoreStart <= LampeggiatoreStart(25 DOWNTO 0) & '0';
           LampState <= LampDown_2;
         ELSE
-          LampState <= LampDown_l;
+          LampState <= LampDown_1;
         END IF;
 
       WHEN LampDown_2 =>
@@ -111,7 +111,7 @@ BEGIN
 
       WHEN LampDown_3 =>
 
-        IF (Lampeggiatore = '!') THEN
+        IF (Lampeggiatore = '1') THEN
           LampeggiatoreStart <= LampeggiatoreStart(25 DOWNTO 0) & '0';
           LampState <= LampUp_0;
         ELSE

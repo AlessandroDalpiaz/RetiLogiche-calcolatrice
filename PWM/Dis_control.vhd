@@ -1,9 +1,11 @@
 LIBRARY IEEE;
+
 USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.NUMERIC_STD.ALL;
 USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 -- Uncomment the following LIBRARY declaration IF using
 -- arithmetic functions with Signed or Unsigned values 
-USE IEEE.NUMERIC_STD.ALL;
+
 
 -- Uncomment the following LIBRARY declaration IF instantiating
 -- any Xilinx leaf cells in this code.
@@ -41,14 +43,14 @@ BEGIN
       Dis_demultiplier <= Dis_demultiplier - '1';
       IF (Dis_demultiplier = STD_LOGIC_VECTOR(to_unsigned(0, DisSpdBitN))) THEN
         Dis_clk <= NOT(Dis_clk);
-        Disdemultiplier <= STD_LOGIC_VECTOR(to_unsigned(390000, DisSpdBitN));
+        Dis_demultiplier <= STD_LOGIC_VECTOR(to_unsigned(390000, DisSpdBitN));
       END IF;
     END IF;
   END PROCESS;
 
   Dis_gen : PROCESS (Dis_clk)
   BEGIN
-    IF (risingedge(Dis_clk)) THEN
+    IF (rising_edge(Dis_clk)) THEN
 
       CASE(Dis_state) IS
 
@@ -79,7 +81,7 @@ BEGIN
 
         IF (Dis_type = '0') THEN
           Dis_state <= sawtooth_Dis;
-        ELSIF (intensita_sig = STD_LOGIC_VECTOR(to_unsigned(1, DislntBitN))) THEN
+        ELSIF (intensita_sig = STD_LOGIC_VECTOR(to_unsigned(1, DisIntBitN))) THEN
           Dis_state <= triangular_Dis_up;
           Dis_state <= triangular_Dis_up;
         ELSE
@@ -93,3 +95,4 @@ BEGIN
   Dis_intensita <= intensita_sig;
 END Behavioral;
 
+--ghdl -a --ieee=synopsys -fexplicit Dis_control.vhd 

@@ -5,7 +5,7 @@ USE IEEE.STD_LOGIC_1164.ALL;
 -- arithmetic functions with Signed or Unsigned values 
 USE IEEE.NUMERIC_STD.ALL;
 
--- Uncamment the following LIBRARY declaration IF instantiating
+-- Uncomment the following LIBRARY declaration IF instantiating
 -- any Xilinx leaf cells in this code.
 --library UNISIM;
 --use UNISIM.VComponents.all;
@@ -35,6 +35,7 @@ ARCHITECTURE Behavioral OF Luci_TESTBENCH IS
    SIGNAL led : STD_LOGIC := '0';
    SIGNAL LampEnable : STD_LOGIC := '0';
    SIGNAL IntManual : STD_LOGIC := '0';
+   SIGNAL DisSelect : STD_LOGIC := '0';
 
    CONSTANT clkPeriod : TIME := 10 ns;
 

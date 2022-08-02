@@ -1,0 +1,16 @@
+v 4
+file . "Top_level.vhd" "6d2969733fbb5d030b22c6ab8093adff0649600c" "20220727211220.095":
+  entity luci at 1( 0) + 0 on 25;
+  architecture behavioral of luci at 25( 618) + 0 on 26;
+file . "Dis_control_testbench.vhd" "26e013955e8ae1a2fe3532b423954cd9ce826201" "20220727200819.954":
+  entity dis_control at 1( 0) + 0 on 13;
+  architecture behavioral of dis_control at 25( 608) + 0 on 14;
+file . "Lamp_control.vhd" "01eac6b424fd223fb522e7c646d756aa6c4d73be" "20220727201328.910":
+  entity lamp_control at 1( 0) + 0 on 15;
+  architecture behavioral of lamp_control at 21( 500) + 0 on 16;
+file . "Led_pwm_testbench.vhd" "f0d662125e8940d688d17768a14235c9bd30bee6" "20220727203356.820":
+  entity led_pwm at 1( 0) + 0 on 19;
+  architecture behavioral of led_pwm at 27( 710) + 0 on 20;
+file . "Top_level_testbench.vhd" "9be0afbc1f3b793eac533123996c366f7d423b81" "20220727204401.084":
+  entity luci_testbench at 1( 0) + 0 on 23;
+  architecture behavioral of luci_testbench at 17( 394) + 0 on 24;

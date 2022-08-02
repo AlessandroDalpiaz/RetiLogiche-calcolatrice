@@ -5,7 +5,7 @@ USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 -- arithmetic functions with Signed or Unsigned values 
 USE IEEE.NUMERIC_STD.ALL;
 
--- Uncamment the following LIBRARY declaration IF instantiating
+-- Uncomment the following LIBRARY declaration IF instantiating
 -- any Xilinx leaf cells in this code.
 --library UNISIM;
 --use UNISIM.VComponents.all;
